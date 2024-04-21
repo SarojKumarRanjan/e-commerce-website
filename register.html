@@ -90,11 +90,18 @@
         <div class="col-md-7 py-3 py-md-0" id="side2">
             <h3 class="text-center">Create Account</h3>
             <div class="input2 text-center">
-            <input type="name" placeholder="Name">
-            <input type="name" placeholder="User Name">
-            <input type="number" placeholder="Phone">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
+                 <form id="registerForm" action="/register.html" method="post">
+            <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+            <input type="password" id="password" name="password" required>
+                      <input type="submit" value="Submit">
+    </form>
             </div>
             <p class="text-center" id="btnlogin"><a href="#">SIGN UP</a></p>
         </div>
