@@ -81,25 +81,17 @@ app.get("/register.html",(req, res)=>{
 
 // Register route
 app.post('/register.html', (req, res) => {
-    const { name, username, phone, email, password } = req.body;
-
-    const newUser = new User({
-        name,
-        username,
-        phone,
-        email,
-        password
-    });
-
-    newUser.save((err) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Failed to register user' });
-        } else {
-            res.status(201).json({ message: 'User registered successfully' });
-        }
-    });
-});
+   const data = {
+          name: req.body.name, 
+          username: req.body.username,  
+          phone: req.body.phone,                                            
+          email: req.body.email,
+          password: req.body.password,
+    }
+    const newUser = new Users(data);
+    await newUser.save();
+    res.redirect('/');
+})
 
 
 
