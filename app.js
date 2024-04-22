@@ -23,7 +23,7 @@ const port = process.env.PORT || 5000; // Use the dynamic port assigned by Herok
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017');
+mongoose.connect('mongodb+srv://snehasingh5754:@123Aman@cluster0.zjsumoa.mongodb.net/');
 const db = mongoose.connection;
 
 // Define user schema
