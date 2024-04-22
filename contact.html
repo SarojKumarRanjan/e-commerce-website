@@ -66,10 +66,10 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
-          <form class="d-flex" id="search">
+          <!-- <form class="d-flex" id="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>
@@ -105,7 +105,22 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 30px;">
+        <div class="row" style="margin-top: 30px;"n>
+          <!-- <form action="/send_enquiry.php" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" required><br>
+            
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+            
+            <button type="submit">Submit</button>
+        </form> -->
             <div class="col-md-4 py-3 py-md-0">
                 <input type="text" class="form-control form-control" placeholder="enter your name">
             </div>
@@ -118,7 +133,7 @@
             <div class="form-group" style="margin-top: 30px;">
                 <textarea class="form-control" id="" rows="5" placeholder="enter your enquiry, we will get in touch with you. "></textarea>
             </div>
-            <div class="messagebtn text-center"><button>Message</button></div>
+            <div class="messagebtn text-center"  >  <a href="/contact.html">Message</a></div>
         </div>
     </div>
 
@@ -192,10 +207,10 @@
              
 
               <div class="socail-links mt-3">
-                <a href="https://wa.me/9508649463"><i class="fa-brands fa-phone"></i></a>
-                <a href="amanelectro4242@gmail.com"><i class="fa-brands fa-envelope"></i></a>
-               
-                <a href="https://www.indiamart.com/amanelectro/"><i class="fa-brands fa-location-dot"></i></a>
+                <a href="https://wa.me/9508649463"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:amanelectro4242@gmail.com"><i class="fas fa-envelope"></i></a>
+                
+                <a href="https://www.indiamart.com/amanelectro/"><i class="fas fa-map-marker-alt"></i></a>
               </div>
             
             </div>
@@ -215,27 +230,19 @@
     </footer>
     <!-- footer -->
 
-
-
-
-
-
-
     <a href="#" class="arrow"><i><img src="./images/arrow.png" alt=""></i></a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+    
+      function redirectToHomePage() {
+          
+          window.location.href = '/?action=message';
+      }
+ 
+    
+    
+    
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
 </html>
