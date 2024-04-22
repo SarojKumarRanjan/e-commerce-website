@@ -80,7 +80,7 @@ app.get("/register.html",(req, res)=>{
 })
 
 // Register route
-app.post('/register.html', (req, res) => {
+app.post('/register.html', async (req, res) => {
    const data = {
           name: req.body.name, 
           username: req.body.username,  
