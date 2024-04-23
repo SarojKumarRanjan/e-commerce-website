@@ -51,7 +51,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type'], // Allow these headers
 }));
 
-app.use('/api', (req, res) => {
+app.use('/', (req, res) => {
   proxy.web(req, res, { target: 'http://localhost:1234' });
 });
 
