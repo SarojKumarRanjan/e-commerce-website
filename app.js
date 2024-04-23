@@ -86,7 +86,7 @@ app.get("/contact.html",(req, res)=>{
 
 
 app.get("/api/login.html",(req, res)=>{
-    res.sendFile(__dirname+"/api/login.html");
+    res.sendFile(__dirname+"/login.html");
 })
 
 app.post('/api/login.html', async (req, res)=> {
