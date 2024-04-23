@@ -2,6 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 // Connection URL
@@ -40,7 +41,13 @@ const app = express();
 app.use(express.static('public'));
 const port = process.env.PORT || 5000; // Use the dynamic port assigned by Heroku or default to 5000
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({
+  origin: '*', // Allow requests from this origin
+  methods: ['GET', 'POST'],      // Allow these HTTP methods
+  allowedHeaders: ['Content-Type'], // Allow these headers
+}));
 
 app.get("/", (req, res)=>{
     res.sendFile(__dirname+"/index.html");
