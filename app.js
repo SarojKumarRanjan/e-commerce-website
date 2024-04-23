@@ -9,7 +9,8 @@ const uri = 'mongodb+srv://snehakumari:123Aman@sneha.tbgpj9n.mongodb.net/?retryW
 
 
 // Connect to MongoDB
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri);
 
 // Get the default connection
 const db = mongoose.connection;
