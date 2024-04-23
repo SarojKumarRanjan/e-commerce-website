@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+const httpProxy = require('http-proxy');
 // Connection URL
 const uri = 'mongodb+srv://snehakumari:123Aman@sneha.tbgpj9n.mongodb.net/?retryWrites=true&w=majority';
 
@@ -38,6 +39,7 @@ db.once('open', () => {
 module.exports = db;
 
 const app = express();
+const proxy = httpProxy.createProxyServer();
 app.use(express.static('public'));
 const port = process.env.PORT || 5000; // Use the dynamic port assigned by Heroku or default to 5000
 
