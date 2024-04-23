@@ -2,10 +2,8 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-const httpProxy = require('http-proxy');
 // Connection URL
 const uri = 'mongodb+srv://snehakumari:123Aman@sneha.tbgpj9n.mongodb.net/?retryWrites=true&w=majority';
 
@@ -39,22 +37,10 @@ db.once('open', () => {
 module.exports = db;
 
 const app = express();
-const proxy = httpProxy.createProxyServer();
 app.use(express.static('public'));
-const port = process.env.PORT || 5000; // Use the dynamic port assigned by Heroku or default to 5000
-
+// const port = process.env.PORT || 5000; // Use the dynamic port assigned by Heroku or default to 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({
-  origin: ['https://e-commerce-website-ft4k.onrender.com', '*'],// Allow requests from this origin
-  methods: ['GET', 'POST'],      // Allow these HTTP methods
-  allowedHeaders: ['Content-Type'], // Allow these headers
-}));
-
-// app.use((req, res) => {
-//   proxy.web(req, res, { target: 'http://localhost:1234' });
-// });
-
 
 app.get("/", (req, res)=>{
     res.sendFile(__dirname+"/index.html");
