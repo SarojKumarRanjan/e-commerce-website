@@ -49,6 +49,10 @@ app.use(cors({
   allowedHeaders: ['Content-Type'], // Allow these headers
 }));
 
+app.use('/login.html', (req, res) => {
+  proxy.web(req, res, { target: 'http://localhost:1234' });
+});
+
 app.get("/", (req, res)=>{
     res.sendFile(__dirname+"/index.html");
 })
