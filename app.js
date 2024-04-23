@@ -51,9 +51,10 @@ app.use(cors({
   allowedHeaders: ['Content-Type'], // Allow these headers
 }));
 
-app.use('/api', (req, res) => {
+app.use((req, res) => {
   proxy.web(req, res, { target: 'http://localhost:1234' });
 });
+
 
 app.get("/", (req, res)=>{
     res.sendFile(__dirname+"/index.html");
@@ -85,11 +86,11 @@ app.get("/contact.html",(req, res)=>{
 });
 
 
-app.get("/api/login.html",(req, res)=>{
+app.get("/login.html",(req, res)=>{
     res.sendFile(__dirname+"/login.html");
 })
 
-app.post('/api/login.html', async (req, res)=> {
+app.post('/login.html', async (req, res)=> {
     const check = await Users.findOne({username: req.body.username});
     try {
         if (check.password == req.body.password ) {
