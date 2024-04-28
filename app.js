@@ -2,6 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const path = require('path');
 const mongoose = require('mongoose');
 // Connection URL
@@ -42,6 +43,7 @@ app.use(express.static('public'));
 // const port = process.env.PORT || 5000; // Use the dynamic port assigned by Heroku or default to 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get("/", (req, res)=>{
     res.sendFile(__dirname+"/index.html");
@@ -62,16 +64,50 @@ app.get("/about.html",(req, res)=>{
 app.get("/contact.html",(req, res)=>{
     // Check if a specific query parameter exists in the request
     
-    if (req.query.action === 'message') {
-        // If the query parameter 'action' is 'message', redirect to home page
-        res.redirect('/');
-    } 
-    else {
+    // if (req.query.action === 'message') {
+    //     // If the query parameter 'action' is 'message', redirect to home page
+    //     res.redirect('/');
+    // } 
+    // else {
         // Otherwise, serve the contact.html file as usual
         res.sendFile(__dirname + "/contact.html");
-    }
+    // }
 });
 
+app.post('/submit-enquiry', (req, res) => {
+    const { name, machine, phone, message } = req.body;
+
+    // Here, you can perform validation, data processing, and send email or store in database  
+
+    // Example: Sending email using Nodemailer
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'miniyuvi33@gmail.com',
+            pass: 'arizfiylabkvmznr',
+        }
+    });
+
+    const mailOptions = {
+        from: 'miniyuvi33@gmail.com',
+        to: 'snehasingh5754@gmail.com',
+        subject: 'New Enquiry',
+        text: `Name: ${name}\nMachine: ${machine}\nPhoneNo: ${phone}\nMessage: ${message}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error:', error);
+            //  res.status(500).send('Error sending enquiry');
+        } else {
+            console.log('Email sent:', info.response);
+            // res.status(200).send('Enquiry sent successfully');
+            res.redirect('/contact.html');
+            alert('Please login');
+        }
+    });
+
+});
 
 app.get("/login.html",(req, res)=>{
     res.sendFile(__dirname+"/login.html");
